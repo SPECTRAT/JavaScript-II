@@ -86,11 +86,15 @@ multiplyNums(2, 5, function(multiply) {
 //   // Pass true to the callback if it is, otherwise pass false.
 // }
 
+
+
 function contains(item, list, callback) {
   return callback()
 }
 
 /* STRETCH PROBLEM */
+const testNums = [1 , 2, 3, 18, 13, 2, 21, 1, 3];
+
 
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
