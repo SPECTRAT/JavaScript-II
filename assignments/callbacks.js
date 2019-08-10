@@ -89,8 +89,18 @@ multiplyNums(2, 5, function(multiply) {
 
 
 function contains(item, list, callback) {
-  return callback()
+  callback(console.log(list.includes(item)))
 }
+
+contains('Pencil', items, function(search) {
+  return (search)
+});
+
+contains('Bread', items, function(search) {
+  return (search)
+});
+
+//----------------------------------------------------------------
 
 /* STRETCH PROBLEM */
 const testNums = [1 , 2, 3, 18, 13, 2, 21, 1, 3];
