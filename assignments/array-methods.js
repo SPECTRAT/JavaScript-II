@@ -90,16 +90,36 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1: The organizers of the marathon want to send out a thank you to the corporate offices of all the companies whose donations reached over 150. Make an array called hotShots listing the names of these companies so they can do so! 1-49, 50-99, 100-199, 200+ 
-let hotShots = [];
+// Problem 1: The marathing organizers want to send out donation based thank you packages to the corporate offices of all the runners. There will be four levels for thank you packages. Companies who had donations between 1 and 49 will recieve bronze packages, companies with donations between 50 and 99 will receive silver, companies who had donations between 100 and 199 will receive gold, and companies who had donations reached over 200 will receive platinum packages. Make a list of company names for each package level for the organizers.
 
-let donationTally = runners.filter((company) => {
-  if (company.donation >= 150) {
-   hotShots.push(`${company.company_name} made a great effort!`);
-  };
+let bronze = [];
+let silver = [];
+let gold = [];
+let platinum = [];
+
+
+let companyFiltered = runners.filter((company) => {
+
+  let donor = company.company_name;
+   let donationNum = company.donation;
+
+   if (donationNum >= 1 && donationNum <= 49) {
+    bronze.push(donor);
+  } 
+  else if (donationNum >= 50 && donationNum <= 99){
+    silver.push(donor);
+  }
+
+  else if (donationNum >= 100 && donationNum <= 199) {
+    gold.push(donor);
+  }
+  else if (donationNum >= 200) {
+    platinum.push(donor);
+  }
 });
+ 
+console.log(bronze, silver, gold, platinum);
 
-console.log(hotShots);
 
 // Problem 2
 
