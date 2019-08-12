@@ -72,8 +72,6 @@ console.log(allCaps);
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 
-//let largeShirts = [runners.shirt_size.filter("L")];
-
 let largeShirts = runners.filter((name) => {
   return name.shirt_size === "L";
 });
@@ -90,13 +88,35 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1: The marathing organizers want to send out donation based thank you packages to the corporate offices of all the runners. There will be four levels for thank you packages. Companies who had donations between 1 and 49 will recieve bronze packages, companies with donations between 50 and 99 will receive silver, companies who had donations between 100 and 199 will receive gold, and companies who had donations reached over 200 will receive platinum packages. Make a list of company names for each package level for the organizers.
+// Problem 1: The runner that came in first place in the marathon has an id of 14, the second place racer has an id of 30. Log a congratulatory message for the both of them.
+
+let congrats = [];
+
+function winCheck(runners) {
+  if (runners.id == 14 || runners.id == 30) {
+    return true;
+  }
+};
+
+let winners = runners.filter(winCheck);
+
+//console.log(winners);
+
+winners.forEach(winner => congrats.push(`Congrats ${winner.first_name}!`));
+
+console.log(congrats);
+
+// Problem 2: 
+
+
+
+
+// Problem 3: The marathing organizers want to send out donation based thank you packages to the corporate offices of all the runners. There will be four levels for thank you packages. Companies who had donations between 1 and 49 will recieve bronze packages, companies with donations between 50 and 99 will receive silver, companies who had donations between 100 and 199 will receive gold, and companies who had donations reached over 200 will receive platinum packages. Make a list of company names for each package level for the organizers.
 
 let bronze = [];
 let silver = [];
 let gold = [];
 let platinum = [];
-
 
 let companyFiltered = runners.filter((company) => {
 
@@ -119,8 +139,3 @@ let companyFiltered = runners.filter((company) => {
 });
  
 console.log(bronze, silver, gold, platinum);
-
-
-// Problem 2
-
-// Problem 3
