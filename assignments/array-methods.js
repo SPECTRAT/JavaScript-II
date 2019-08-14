@@ -88,7 +88,7 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1: The runner that came in first place in the marathon has an id of 14, the second place racer has an id of 30. Log a congratulatory message for the both of them.
+// Problem 1: The runner that came in first place in the marathon was racer number 14, the second place winner was racer number 30. Log a congratulatory message for the both of them!
 
 let congrats = [];
 
@@ -106,9 +106,17 @@ winners.forEach(winner => congrats.push(`Congrats ${winner.first_name}!`));
 
 console.log(congrats);
 
-// Problem 2: 
+// Problem 2: The even numbered racers have teamed up to form a new social sunrise jogging group! Make an array consisting of the group info.
 
+let socialSunRise = []
 
+runners.forEach(function(runner) {
+  if(runner.id % 2 === 0) {
+    socialSunRise.push(runner);
+  }
+})
+
+console.log(socialSunRise);
 
 
 // Problem 3: The marathing organizers want to send out donation based thank you packages to the corporate offices of all the runners. There will be four levels for thank you packages. Companies who had donations between 1 and 49 will recieve bronze packages, companies with donations between 50 and 99 will receive silver, companies who had donations between 100 and 199 will receive gold, and companies who had donations reached over 200 will receive platinum packages. Make a list of company names for each package level for the organizers.
