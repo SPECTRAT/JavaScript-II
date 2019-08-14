@@ -56,28 +56,94 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+runners.forEach(firstLast => fullName.push(`${firstLast.first_name} ${firstLast.last_name}`))
+
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+let allCaps = runners.map((names) => {
+  return names.first_name.toUpperCase();
+});
+
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+
+let largeShirts = runners.filter((name) => {
+  return name.shirt_size === "L";
+});
+
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+let ticketPriceTotal = runners.reduce((total, runner) => {
+  return total += runner.donation;
+}, 0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: The runner that came in first place in the marathon was racer number 14, the second place winner was racer number 30. Log a congratulatory message for the both of them!
 
-// Problem 2
+let congrats = [];
 
-// Problem 3
+function winCheck(runners) {
+  if (runners.id == 14 || runners.id == 30) {
+    return true;
+  }
+};
+
+let winners = runners.filter(winCheck);
+
+//console.log(winners);
+
+winners.forEach(winner => congrats.push(`Congrats ${winner.first_name}!`));
+
+console.log(congrats);
+
+// Problem 2: The even numbered racers have teamed up to form a new social sunrise jogging group! Make an array consisting of the group info.
+
+let socialSunRise = []
+
+runners.forEach(function(runner) {
+  if(runner.id % 2 === 0) {
+    socialSunRise.push(runner);
+  }
+})
+
+console.log(socialSunRise);
+
+
+// Problem 3: The marathing organizers want to send out donation based thank you packages to the corporate offices of all the runners. There will be four levels for thank you packages. Companies who had donations between 1 and 49 will recieve bronze packages, companies with donations between 50 and 99 will receive silver, companies who had donations between 100 and 199 will receive gold, and companies who had donations reached over 200 will receive platinum packages. Make a list of company names for each package level for the organizers.
+
+let bronze = [];
+let silver = [];
+let gold = [];
+let platinum = [];
+
+let companyFiltered = runners.filter((company) => {
+
+  let donor = company.company_name;
+   let donationNum = company.donation;
+
+   if (donationNum >= 1 && donationNum <= 49) {
+    bronze.push(donor);
+  } 
+  else if (donationNum >= 50 && donationNum <= 99){
+    silver.push(donor);
+  }
+
+  else if (donationNum >= 100 && donationNum <= 199) {
+    gold.push(donor);
+  }
+  else if (donationNum >= 200) {
+    platinum.push(donor);
+  }
+});
+ 
+console.log(bronze, silver, gold, platinum);
